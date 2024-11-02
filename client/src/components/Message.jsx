@@ -1,29 +1,26 @@
 import React from 'react';
 
 const Message = ({ message, name }) => {
-  let isSender = false;
-
   const trimmedName = name.trim().toLowerCase();
-  if (message.user === trimmedName) {
-    isSender = true;
-  }
+  const isSender = message.user === trimmedName;
 
   return (
-    isSender ? (
-      <div className="messageContainer justifyEnd">
-        <p className="sentText pr-10">{trimmedName}</p>
-        <div className="messageBox backgroundBlue">
-          <p className="messageText colorWhite">{message.text}</p>
+    <div className={`flex ${isSender ? 'justify-end' : 'justify-start'} p-2`}>
+      <div className={`flex flex-col ${isSender ? 'items-end' : 'items-start'} max-w-xs`}>
+        {isSender ? (
+          <p className="text-sm text-gray-500 mb-1">{trimmedName}</p>
+        ) : (
+          <p className="text-sm text-gray-500 mb-1">{message.user}</p>
+        )}
+        <div
+          className={`p-3 rounded-lg ${
+            isSender ? 'bg-blue-500 text-white' : 'bg-gray-300 text-black'
+          }`}
+        >
+          <p className="text-sm">{message.text}</p>
         </div>
       </div>
-    ) : (
-      <div className="messageContainer justifyStart">
-        <div className="messageBox backgroundLight">
-          <p className="messageText colorDark">{message.text}</p>
-        </div>
-        <p className="sentText pl-10">{message.user}</p>
-      </div>
-    )
+    </div>
   );
 };
 

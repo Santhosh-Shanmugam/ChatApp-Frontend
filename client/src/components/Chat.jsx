@@ -52,8 +52,8 @@ const Chat = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className='flex flex-col items-center justify-center h-screen bg-black p-4'>
+      <div className=''>
         <Infobar room={room} />
         <Messages messages={messages} name={name} />
         <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />

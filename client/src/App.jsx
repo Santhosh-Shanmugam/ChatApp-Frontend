@@ -2,6 +2,9 @@ import React from 'react'
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import Chat from './components/Chat'
 import Join from './components/Join'
+import './custom.css'
+
+
 const App = () => {
   return (
     <div>
